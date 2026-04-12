@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Субсидии для МСП · Практика</title>
-    <!-- SortableJS для drag-and-drop -->
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
     <style>
         * {
@@ -23,7 +22,6 @@
             line-height: 1.5;
         }
 
-        /* абстрактные круги — полупрозрачные, обрезанные */
         body::before {
             content: "";
             position: fixed;
@@ -65,7 +63,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* карточка вопроса */
         .question-card {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
@@ -75,11 +72,6 @@
             margin-bottom: 28px;
             box-shadow: 0 15px 30px -10px rgba(0, 40, 40, 0.12), 0 4px 8px rgba(0,0,0,0.02);
             border: 1px solid rgba(40, 203, 198, 0.2);
-            transition: box-shadow 0.2s;
-        }
-
-        .question-card:hover {
-            box-shadow: 0 20px 35px -12px rgba(40, 203, 198, 0.2);
         }
 
         .q-num {
@@ -91,7 +83,6 @@
             padding: 4px 14px;
             border-radius: 40px;
             margin-bottom: 18px;
-            letter-spacing: 0.5px;
         }
 
         .q-title {
@@ -111,7 +102,6 @@
             border-left: 4px solid #28CBC6;
         }
 
-        /* варианты ответов */
         .options {
             display: flex;
             flex-direction: column;
@@ -135,7 +125,6 @@
         .option:hover {
             border-color: #28CBC6;
             background: rgba(40,203,198,0.03);
-            transform: translateY(-1px);
         }
 
         .option.selected {
@@ -151,18 +140,6 @@
             flex-shrink: 0;
         }
 
-        .option label {
-            font-weight: 500;
-            cursor: pointer;
-            flex: 1;
-        }
-
-        /* для множественного выбора */
-        .checkbox-group .option {
-            cursor: pointer;
-        }
-
-        /* кнопка проверки */
         .check-btn {
             background: #28CBC6;
             border: none;
@@ -181,7 +158,6 @@
         .check-btn:hover {
             background: #1eb5af;
             transform: scale(1.02);
-            box-shadow: 0 10px 22px -8px #28CBC6;
         }
 
         .reset-btn {
@@ -192,7 +168,6 @@
             padding: 14px 22px;
             border-radius: 60px;
             cursor: pointer;
-            transition: 0.15s;
         }
 
         .reset-btn:hover {
@@ -209,7 +184,6 @@
             border-left: 6px solid #28CBC6;
             font-weight: 500;
             display: none;
-            backdrop-filter: blur(4px);
         }
 
         .feedback.show {
@@ -226,7 +200,6 @@
             background: rgba(255, 235, 235, 0.8);
         }
 
-        /* drag & drop блоки */
         .drag-container {
             display: flex;
             flex-wrap: wrap;
@@ -265,28 +238,11 @@
             border: 1.5px solid rgba(40,203,198,0.3);
             font-weight: 500;
             cursor: grab;
-            transition: 0.15s;
-            backdrop-filter: blur(4px);
-        }
-
-        .drag-item:active {
-            cursor: grabbing;
-            box-shadow: 0 8px 16px rgba(40,203,198,0.2);
         }
 
         .drag-item.sortable-ghost {
             opacity: 0.4;
             background: #28CBC6;
-            color: transparent;
-        }
-
-        .drag-item.sortable-drag {
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-            transform: rotate(1deg);
-        }
-
-        .pair-feedback {
-            margin-top: 20px;
         }
 
         .action-row {
@@ -295,23 +251,10 @@
             flex-wrap: wrap;
         }
 
-        /* адаптив */
-        @media (max-width: 600px) {
-            .q-title { font-size: 1.3rem; }
-            .option { padding: 12px 14px; }
-            .check-btn, .reset-btn { padding: 12px 18px; font-size: 0.9rem; }
-        }
-
-        /* небольшие подсказки */
         .hint {
             color: #3d6377;
             font-size: 0.85rem;
             margin-top: 8px;
-        }
-
-        .accent-badge {
-            color: #28CBC6;
-            font-weight: 700;
         }
     </style>
 </head>
@@ -320,16 +263,16 @@
     <h1>📋 Субсидии: практика</h1>
     <div class="subhead">10 вопросов по материалам курса. Проверьте понимание отсекающих критериев, грантов и регламентов.</div>
 
-    <!-- ВОПРОС 1 (одиночный выбор) -->
+    <!-- ВОПРОС 1 -->
     <div class="question-card" id="q1">
         <div class="q-num">Вопрос 1</div>
         <div class="q-title">Компенсация затрат</div>
         <div class="q-text">Анна потратила 300 000 ₽ на оборудование. Какой вид поддержки подойдёт, чтобы компенсировать уже понесённые расходы?</div>
-        <div class="options" data-type="single" data-correct="B">
-            <div class="option" data-value="A"><input type="radio" name="q1" id="q1_a"><label for="q1_a">A) Грант</label></div>
-            <div class="option" data-value="B"><input type="radio" name="q1" id="q1_b"><label for="q1_b">B) Субсидия на возмещение затрат</label></div>
-            <div class="option" data-value="C"><input type="radio" name="q1" id="q1_c"><label for="q1_c">C) Льготный кредит</label></div>
-            <div class="option" data-value="D"><input type="radio" name="q1" id="q1_d"><label for="q1_d">D) Микрозайм</label></div>
+        <div class="options" data-type="single" data-correct="2">
+            <div class="option" data-value="1"><input type="radio" name="q1" id="q1_1"><label for="q1_1">1. Грант</label></div>
+            <div class="option" data-value="2"><input type="radio" name="q1" id="q1_2"><label for="q1_2">2. Субсидия на возмещение затрат</label></div>
+            <div class="option" data-value="3"><input type="radio" name="q1" id="q1_3"><label for="q1_3">3. Льготный кредит</label></div>
+            <div class="option" data-value="4"><input type="radio" name="q1" id="q1_4"><label for="q1_4">4. Микрозайм</label></div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q1">Проверить</button>
@@ -343,11 +286,11 @@
         <div class="q-num">Вопрос 2</div>
         <div class="q-title">Старт с нуля</div>
         <div class="q-text">Анна хочет открыть новую пекарню, трат ещё не было. Есть бизнес-план. Что искать?</div>
-        <div class="options" data-type="single" data-correct="C">
-            <div class="option" data-value="A"><input type="radio" name="q2" id="q2_a"><label for="q2_a">A) Субсидию на возмещение затрат</label></div>
-            <div class="option" data-value="B"><input type="radio" name="q2" id="q2_b"><label for="q2_b">B) Льготный кредит</label></div>
-            <div class="option" data-value="C"><input type="radio" name="q2" id="q2_c"><label for="q2_c">C) Грант или субсидию на реализацию проекта</label></div>
-            <div class="option" data-value="D"><input type="radio" name="q2" id="q2_d"><label for="q2_d">D) Только кредит, субсидий на старт нет</label></div>
+        <div class="options" data-type="single" data-correct="3">
+            <div class="option" data-value="1"><input type="radio" name="q2" id="q2_1"><label for="q2_1">1. Субсидию на возмещение затрат</label></div>
+            <div class="option" data-value="2"><input type="radio" name="q2" id="q2_2"><label for="q2_2">2. Льготный кредит</label></div>
+            <div class="option" data-value="3"><input type="radio" name="q2" id="q2_3"><label for="q2_3">3. Грант или субсидию на реализацию проекта</label></div>
+            <div class="option" data-value="4"><input type="radio" name="q2" id="q2_4"><label for="q2_4">4. Только кредит, субсидий на старт нет</label></div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q2">Проверить</button>
@@ -361,11 +304,11 @@
         <div class="q-num">Вопрос 3</div>
         <div class="q-title">Оборотные средства</div>
         <div class="q-text">Срочно нужны 200 000 ₽ на муку и масло. Что выбрать быстрее всего?</div>
-        <div class="options" data-type="single" data-correct="C">
-            <div class="option" data-value="A"><input type="radio" name="q3" id="q3_a"><label for="q3_a">A) Субсидию на возмещение затрат</label></div>
-            <div class="option" data-value="B"><input type="radio" name="q3" id="q3_b"><label for="q3_b">B) Грант</label></div>
-            <div class="option" data-value="C"><input type="radio" name="q3" id="q3_c"><label for="q3_c">C) Льготный кредит или микрозайм</label></div>
-            <div class="option" data-value="D"><input type="radio" name="q3" id="q3_d"><label for="q3_d">D) Оборотные средства не финансируют</label></div>
+        <div class="options" data-type="single" data-correct="3">
+            <div class="option" data-value="1"><input type="radio" name="q3" id="q3_1"><label for="q3_1">1. Субсидию на возмещение затрат</label></div>
+            <div class="option" data-value="2"><input type="radio" name="q3" id="q3_2"><label for="q3_2">2. Грант</label></div>
+            <div class="option" data-value="3"><input type="radio" name="q3" id="q3_3"><label for="q3_3">3. Льготный кредит или микрозайм</label></div>
+            <div class="option" data-value="4"><input type="radio" name="q3" id="q3_4"><label for="q3_4">4. Оборотные средства не финансируют</label></div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q3">Проверить</button>
@@ -374,7 +317,7 @@
         <div class="feedback" id="fb3"></div>
     </div>
 
-    <!-- ВОПРОС 4 (drag&drop) - соотнесение расходов -->
+    <!-- ВОПРОС 4 (drag&drop) -->
     <div class="question-card" id="q4">
         <div class="q-num">Вопрос 4 (перетащите пары)</div>
         <div class="q-title">Что компенсируют при модернизации?</div>
@@ -383,26 +326,26 @@
             <div class="drag-col">
                 <h4>📌 Статья расходов</h4>
                 <ul class="drag-list" id="left4">
-                    <li class="drag-item" data-id="eq">1. Покупка печи (300 000 ₽)</li>
-                    <li class="drag-item" data-id="rent">2. Предоплата аренды (150 000 ₽)</li>
-                    <li class="drag-item" data-id="expo">3. Участие в выставке (50 000 ₽)</li>
+                    <li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li>
+                    <li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li>
+                    <li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li>
                 </ul>
             </div>
             <div class="drag-col">
                 <h4>🎯 Результат</h4>
                 <ul class="drag-list" id="right4">
-                    <li class="drag-item" data-id="yes">A) Скорее всего одобрят</li>
-                    <li class="drag-item" data-id="no">B) Скорее всего откажут</li>
-                    <li class="drag-item" data-id="maybe">C) Зависит от регламента</li>
+                    <li class="drag-item" data-id="yes">Скорее всего одобрят</li>
+                    <li class="drag-item" data-id="no">Скорее всего откажут</li>
+                    <li class="drag-item" data-id="maybe">Зависит от регламента</li>
                 </ul>
             </div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q4">Проверить пары</button>
-            <button class="reset-btn" data-question="q4">Сбросить расположение</button>
+            <button class="reset-btn" data-question="q4">Сбросить</button>
         </div>
         <div class="feedback" id="fb4"></div>
-        <div class="hint">🔄 Перетащите элементы из левой колонки к подходящим правым. Правильные пары: оборудование→одобрят; аренда→откажут; выставка→зависит.</div>
+        <div class="hint">🔄 Правильные пары: оборудование → одобрят; аренда → откажут; выставка → зависит.</div>
     </div>
 
     <!-- ВОПРОС 5 -->
@@ -410,11 +353,11 @@
         <div class="q-num">Вопрос 5</div>
         <div class="q-title">Нецелевое использование</div>
         <div class="q-text">Субсидию на оборудование потратили на аренду. Что ждёт предпринимателя?</div>
-        <div class="options" data-type="single" data-correct="B">
-            <div class="option" data-value="A"><input type="radio" name="q5" id="q5_a"><label for="q5_a">A) Ничего, субсидия безвозвратная</label></div>
-            <div class="option" data-value="B"><input type="radio" name="q5" id="q5_b"><label for="q5_b">B) Возврат денег с процентами/штрафом</label></div>
-            <div class="option" data-value="C"><input type="radio" name="q5" id="q5_c"><label for="q5_c">C) Предупреждение, деньги оставят</label></div>
-            <div class="option" data-value="D"><input type="radio" name="q5" id="q5_d"><label for="q5_d">D) Субсидию превратят в кредит</label></div>
+        <div class="options" data-type="single" data-correct="2">
+            <div class="option" data-value="1"><input type="radio" name="q5" id="q5_1"><label for="q5_1">1. Ничего, субсидия безвозвратная</label></div>
+            <div class="option" data-value="2"><input type="radio" name="q5" id="q5_2"><label for="q5_2">2. Возврат денег с процентами/штрафом</label></div>
+            <div class="option" data-value="3"><input type="radio" name="q5" id="q5_3"><label for="q5_3">3. Предупреждение, деньги оставят</label></div>
+            <div class="option" data-value="4"><input type="radio" name="q5" id="q5_4"><label for="q5_4">4. Субсидию превратят в кредит</label></div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q5">Проверить</button>
@@ -428,11 +371,11 @@
         <div class="q-num">Вопрос 6</div>
         <div class="q-title">Налоговый долг — отсечка</div>
         <div class="q-text">При подаче заявки обнаружен долг по налогам 5000 ₽. Каков результат?</div>
-        <div class="options" data-type="single" data-correct="B">
-            <div class="option" data-value="A"><input type="radio" name="q6" id="q6_a"><label for="q6_a">A) Одобрят, но вычтут из субсидии</label></div>
-            <div class="option" data-value="B"><input type="radio" name="q6" id="q6_b"><label for="q6_b">B) Откажут автоматически</label></div>
-            <div class="option" data-value="C"><input type="radio" name="q6" id="q6_c"><label for="q6_c">C) Попросят погасить за 30 дней</label></div>
-            <div class="option" data-value="D"><input type="radio" name="q6" id="q6_d"><label for="q6_d">D) Дадут под залог</label></div>
+        <div class="options" data-type="single" data-correct="2">
+            <div class="option" data-value="1"><input type="radio" name="q6" id="q6_1"><label for="q6_1">1. Одобрят, но вычтут из субсидии</label></div>
+            <div class="option" data-value="2"><input type="radio" name="q6" id="q6_2"><label for="q6_2">2. Откажут автоматически</label></div>
+            <div class="option" data-value="3"><input type="radio" name="q6" id="q6_3"><label for="q6_3">3. Попросят погасить за 30 дней</label></div>
+            <div class="option" data-value="4"><input type="radio" name="q6" id="q6_4"><label for="q6_4">4. Дадут под залог</label></div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q6">Проверить</button>
@@ -441,17 +384,17 @@
         <div class="feedback" id="fb6"></div>
     </div>
 
-    <!-- ВОПРОС 7 множественный выбор -->
+    <!-- ВОПРОС 7 (множественный выбор, без пометки в заголовке) -->
     <div class="question-card" id="q7">
-        <div class="q-num">Вопрос 7 (несколько вариантов)</div>
+        <div class="q-num">Вопрос 7</div>
         <div class="q-title">Отсекающие критерии</div>
         <div class="q-text">Выберите ВСЕ пункты, которые являются отсекающими (приводят к мгновенному отказу).</div>
-        <div class="options checkbox-group" data-type="multi" data-correct='["A","C","E"]'>
-            <div class="option" data-value="A"><input type="checkbox" id="q7_a"><label for="q7_a">A) Отсутствие налоговой задолженности</label></div>
-            <div class="option" data-value="B"><input type="checkbox" id="q7_b"><label for="q7_b">B) Количество создаваемых рабочих мест (5 вместо 3)</label></div>
-            <div class="option" data-value="C"><input type="checkbox" id="q7_c"><label for="q7_c">C) Соответствие ОКВЭД программе</label></div>
-            <div class="option" data-value="D"><input type="checkbox" id="q7_d"><label for="q7_d">D) Качество бизнес-плана</label></div>
-            <div class="option" data-value="E"><input type="checkbox" id="q7_e"><label for="q7_e">E) Наличие в реестре МСП</label></div>
+        <div class="options checkbox-group" data-type="multi" data-correct='["1","3","5"]'>
+            <div class="option" data-value="1"><input type="checkbox" id="q7_1"><label for="q7_1">1. Отсутствие налоговой задолженности</label></div>
+            <div class="option" data-value="2"><input type="checkbox" id="q7_2"><label for="q7_2">2. Количество создаваемых рабочих мест (5 вместо 3)</label></div>
+            <div class="option" data-value="3"><input type="checkbox" id="q7_3"><label for="q7_3">3. Соответствие ОКВЭД программе</label></div>
+            <div class="option" data-value="4"><input type="checkbox" id="q7_4"><label for="q7_4">4. Качество бизнес-плана</label></div>
+            <div class="option" data-value="5"><input type="checkbox" id="q7_5"><label for="q7_5">5. Наличие в реестре МСП</label></div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q7">Проверить</button>
@@ -460,67 +403,67 @@
         <div class="feedback" id="fb7"></div>
     </div>
 
-    <!-- ВОПРОС 8 -->
+    <!-- ВОПРОС 8 (drag&drop чтение регламента) -->
     <div class="question-card" id="q8">
-        <div class="q-num">Вопрос 8</div>
-        <div class="q-title">Портал promote.budget.gov.ru</div>
-        <div class="q-text">Какое действие ошибочно и приведёт к потере времени?</div>
-        <div class="options" data-type="single" data-correct="C">
-            <div class="option" data-value="A"><input type="radio" name="q8" id="q8_a"><label for="q8_a">A) Фильтр по субъекту РФ</label></div>
-            <div class="option" data-value="B"><input type="radio" name="q8" id="q8_b"><label for="q8_b">B) Фильтр по сфере деятельности</label></div>
-            <div class="option" data-value="C"><input type="radio" name="q8" id="q8_c"><label for="q8_c">C) Оставить фильтры пустыми и листать всё подряд</label></div>
-            <div class="option" data-value="D"><input type="radio" name="q8" id="q8_d"><label for="q8_d">D) Фильтр «Категория получателя»</label></div>
-        </div>
-        <div class="action-row">
-            <button class="check-btn" data-question="q8">Проверить</button>
-            <button class="reset-btn" data-question="q8">Сбросить</button>
-        </div>
-        <div class="feedback" id="fb8"></div>
-    </div>
-
-    <!-- ВОПРОС 9 drag&drop 2 -->
-    <div class="question-card" id="q9">
-        <div class="q-num">Вопрос 9 (перетащите пары)</div>
+        <div class="q-num">Вопрос 8 (перетащите пары)</div>
         <div class="q-title">Быстрое чтение регламента</div>
         <div class="q-text">Сопоставьте, что искать и в каком разделе документа.</div>
-        <div class="drag-container" id="drag9">
+        <div class="drag-container" id="drag8">
             <div class="drag-col">
                 <h4>🔍 Что ищем</h4>
-                <ul class="drag-list" id="left9">
-                    <li class="drag-item" data-id="cost">1. Можно ли купить муку?</li>
-                    <li class="drag-item" data-id="reject">2. Меня сразу откажут?</li>
-                    <li class="drag-item" data-id="amount">3. Сколько денег дадут?</li>
-                    <li class="drag-item" data-id="deadline">4. Крайний срок отчёта?</li>
+                <ul class="drag-list" id="left8">
+                    <li class="drag-item" data-id="cost">Можно ли купить муку?</li>
+                    <li class="drag-item" data-id="reject">Меня сразу откажут?</li>
+                    <li class="drag-item" data-id="amount">Сколько денег дадут?</li>
+                    <li class="drag-item" data-id="deadline">Крайний срок отчёта?</li>
                 </ul>
             </div>
             <div class="drag-col">
                 <h4>📂 Где смотреть</h4>
-                <ul class="drag-list" id="right9">
-                    <li class="drag-item" data-id="app1">A) Приложение №1 (перечень расходов)</li>
-                    <li class="drag-item" data-id="req">B) Раздел «Требования к участнику»</li>
-                    <li class="drag-item" data-id="calc">C) Пункт «Размер и расчёт субсидии»</li>
-                    <li class="drag-item" data-id="kpi">D) Раздел про KPI и отчётность</li>
+                <ul class="drag-list" id="right8">
+                    <li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li>
+                    <li class="drag-item" data-id="req">Раздел «Требования к участнику»</li>
+                    <li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li>
+                    <li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li>
                 </ul>
             </div>
         </div>
         <div class="action-row">
-            <button class="check-btn" data-question="q9">Проверить пары</button>
+            <button class="check-btn" data-question="q8">Проверить пары</button>
+            <button class="reset-btn" data-question="q8">Сбросить</button>
+        </div>
+        <div class="feedback" id="fb8"></div>
+        <div class="hint">🔄 Правильные пары: мука → приложение1; отказ → требования; сумма → расчёт; срок → KPI.</div>
+    </div>
+
+    <!-- ВОПРОС 9 -->
+    <div class="question-card" id="q9">
+        <div class="q-num">Вопрос 9</div>
+        <div class="q-title">Языковые маркеры</div>
+        <div class="q-text">«…обязан не иметь долгов И работать в регионе ≥3 лет, ЗА ИСКЛЮЧЕНИЕМ новых МСП первого года». Пекарне 6 месяцев. Что это значит?</div>
+        <div class="options" data-type="single" data-correct="2">
+            <div class="option" data-value="1"><input type="radio" name="q9" id="q9_1"><label for="q9_1">1. Не подходит, нет 3 лет</label></div>
+            <div class="option" data-value="2"><input type="radio" name="q9" id="q9_2"><label for="q9_2">2. Подходит, подпадает под исключение</label></div>
+            <div class="option" data-value="3"><input type="radio" name="q9" id="q9_3"><label for="q9_3">3. Обязана отработать 3 года или заплатить налоги</label></div>
+            <div class="option" data-value="4"><input type="radio" name="q9" id="q9_4"><label for="q9_4">4. Требование 3 лет можно игнорировать</label></div>
+        </div>
+        <div class="action-row">
+            <button class="check-btn" data-question="q9">Проверить</button>
             <button class="reset-btn" data-question="q9">Сбросить</button>
         </div>
         <div class="feedback" id="fb9"></div>
-        <div class="hint">🔄 Правильные пары: мука→приложение1; отказ→требования; сумма→расчёт; срок→KPI.</div>
     </div>
 
-    <!-- ВОПРОС 10 -->
+    <!-- ВОПРОС 10 (новый, вместо портала) -->
     <div class="question-card" id="q10">
         <div class="q-num">Вопрос 10</div>
-        <div class="q-title">Языковые маркеры</div>
-        <div class="q-text">«…обязан не иметь долгов И работать в регионе ≥3 лет, ЗА ИСКЛЮЧЕНИЕМ новых МСП первого года». Пекарне 6 месяцев. Что это значит?</div>
-        <div class="options" data-type="single" data-correct="B">
-            <div class="option" data-value="A"><input type="radio" name="q10" id="q10_a"><label for="q10_a">A) Не подходит, нет 3 лет</label></div>
-            <div class="option" data-value="B"><input type="radio" name="q10" id="q10_b"><label for="q10_b">B) Подходит, подпадает под исключение</label></div>
-            <div class="option" data-value="C"><input type="radio" name="q10" id="q10_c"><label for="q10_c">C) Обязана отработать 3 года или заплатить налоги</label></div>
-            <div class="option" data-value="D"><input type="radio" name="q10" id="q10_d"><label for="q10_d">D) Требование 3 лет можно игнорировать</label></div>
+        <div class="q-title">Софинансирование</div>
+        <div class="q-text">Программа требует софинансирования 30% от стоимости проекта. У предпринимателя есть только 10% своих средств. Одобрят ли заявку?</div>
+        <div class="options" data-type="single" data-correct="2">
+            <div class="option" data-value="1"><input type="radio" name="q10" id="q10_1"><label for="q10_1">1. Да, если проект перспективный</label></div>
+            <div class="option" data-value="2"><input type="radio" name="q10" id="q10_2"><label for="q10_2">2. Нет, несоответствие отсекающему критерию</label></div>
+            <div class="option" data-value="3"><input type="radio" name="q10" id="q10_3"><label for="q10_3">3. Попросят увеличить до 30% в процессе</label></div>
+            <div class="option" data-value="4"><input type="radio" name="q10" id="q10_4"><label for="q10_4">4. Да, если есть поручитель</label></div>
         </div>
         <div class="action-row">
             <button class="check-btn" data-question="q10">Проверить</button>
@@ -532,9 +475,18 @@
 
 <script>
     (function(){
-        // акцентный цвет уже в стилях
+        // Сообщения обратной связи
+        const feedbackMessages = {
+            q1: { correct: '✅ Верно! Субсидия на возмещение затрат — именно для уже понесённых расходов.', incorrect: '❌ Неверно. Грант даётся до старта, кредит нужно возвращать. Правильный ответ: 2.' },
+            q2: { correct: '✅ Отлично! Для старта ищите гранты или субсидии на реализацию.', incorrect: '❌ Ошиблись. Субсидия на возмещение не подходит (трат ещё нет). Верный ответ: 3.' },
+            q3: { correct: '✅ Верно. Для пополнения оборотных средств быстрее льготный кредит.', incorrect: '❌ Субсидии и гранты долго рассматриваются. Правильно: 3.' },
+            q5: { correct: '✅ Да, нецелевое использование → возврат с процентами.', incorrect: '❌ Нарушение целевого использования влечёт возврат всей суммы. Верно: 2.' },
+            q6: { correct: '✅ Именно! Налоговый долг — отсекающий критерий, автоматический отказ.', incorrect: '❌ Даже маленький долг ведёт к отказу. Правильный ответ: 2.' },
+            q7: { correct: '✅ Отлично! 1, 3, 5 — отсекающие. 2 и 4 — оценочные.', incorrect: '❌ Не все верные. Отсекающие: отсутствие долгов, ОКВЭД, реестр МСП. (1, 3, 5).' },
+            q9: { correct: '✅ Да! «За исключением» спасает новые компании.', incorrect: '❌ Маркер «за исключением» делает исключение для новых МСП. Правильно: 2.' },
+            q10: { correct: '✅ Верно. Софинансирование — жёсткое требование, несоответствие ведёт к отказу.', incorrect: '❌ Это отсекающий критерий. Заявку отклонят. Правильно: 2.' }
+        };
 
-        // Функция получения выбранных значений (radio/checkbox)
         function getSelectedValues(container) {
             const type = container.dataset.type;
             if (type === 'single') {
@@ -546,23 +498,10 @@
             }
         }
 
-        // Обратная связь по вопросам 1-3,5-8,10
-        const feedbackMessages = {
-            q1: { correct: '✅ Верно! Субсидия на возмещение затрат — именно для уже понесённых расходов.', incorrect: '❌ Неверно. Грант даётся до старта, кредит нужно возвращать. Правильный ответ: B.' },
-            q2: { correct: '✅ Отлично! Для старта ищите гранты или субсидии на реализацию.', incorrect: '❌ Ошиблись. Субсидия на возмещение не подходит (трат ещё нет). Верный ответ: C.' },
-            q3: { correct: '✅ Верно. Для пополнения оборотных средств быстрее льготный кредит.', incorrect: '❌ Субсидии и гранты долго рассматриваются, а оборотка нужна срочно. Правильно: C.' },
-            q5: { correct: '✅ Да, нецелевое использование → возврат с процентами.', incorrect: '❌ Нарушение целевого использования влечёт возврат всей суммы. Верно: B.' },
-            q6: { correct: '✅ Именно! Налоговый долг — отсекающий критерий, автоматический отказ.', incorrect: '❌ Даже маленький долг ведёт к отказу. Правильный ответ: B.' },
-            q7: { correct: '✅ Отлично! A, C, E — отсекающие. B и D — оценочные.', incorrect: '❌ Не все верные. Отсекающие: отсутствие долгов, ОКВЭД, реестр МСП. (A, C, E).' },
-            q8: { correct: '✅ Верно! Без фильтров вы утонете в информации.', incorrect: '❌ Ошибка — не использовать фильтры. Правильный ответ: C.' },
-            q10: { correct: '✅ Да! «За исключением» спасает новые компании.', incorrect: '❌ Маркер «за исключением» делает исключение для новых МСП. Правильно: B.' }
-        };
-
-        // инициализация обычных вопросов
         document.querySelectorAll('.check-btn[data-question]').forEach(btn => {
             btn.addEventListener('click', function(e) {
                 const qId = this.dataset.question;
-                if (qId === 'q4' || qId === 'q9') return; // обрабатываются отдельно
+                if (qId === 'q4' || qId === 'q8') return;
                 const card = document.getElementById(qId);
                 const optionsDiv = card.querySelector('.options');
                 const fbDiv = card.querySelector('.feedback');
@@ -591,118 +530,49 @@
             });
         });
 
-        // Сброс радио/чекбоксов
         document.querySelectorAll('.reset-btn[data-question]').forEach(btn => {
             btn.addEventListener('click', function() {
                 const qId = this.dataset.question;
-                if (qId === 'q4' || qId === 'q9') {
-                    // сброс drag-drop расположения будет отдельно
-                    return;
-                }
+                if (qId === 'q4' || qId === 'q8') return;
                 const card = document.getElementById(qId);
-                const optionsDiv = card.querySelector('.options');
-                optionsDiv.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(inp => inp.checked = false);
+                card.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(inp => inp.checked = false);
+                card.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
                 const fbDiv = card.querySelector('.feedback');
                 fbDiv.classList.remove('show', 'correct', 'incorrect');
                 fbDiv.textContent = '';
             });
         });
 
-        // ---------- DRAG & DROP для q4 и q9 ----------
-        function initDragDrop(containerId, leftId, rightId, correctMapping, feedbackId, resetBtnId) {
+        // Drag&Drop инициализация
+        function initDragDrop(containerId, leftId, rightId, mapping, fbId) {
             const leftList = document.getElementById(leftId);
             const rightList = document.getElementById(rightId);
-            
-            // Sortable между двумя списками
-            new Sortable(leftList, {
-                group: {
-                    name: containerId,
-                    put: true,
-                    pull: true
-                },
-                animation: 200,
-                ghostClass: 'sortable-ghost',
-                dragClass: 'sortable-drag',
-                sort: true
-            });
-            new Sortable(rightList, {
-                group: {
-                    name: containerId,
-                    put: true,
-                    pull: true
-                },
-                animation: 200,
-                ghostClass: 'sortable-ghost',
-                dragClass: 'sortable-drag',
-                sort: true
-            });
+            new Sortable(leftList, { group: containerId, animation: 200, ghostClass: 'sortable-ghost', sort: true });
+            new Sortable(rightList, { group: containerId, animation: 200, ghostClass: 'sortable-ghost', sort: true });
 
             const checkBtn = document.querySelector(`.check-btn[data-question="${containerId}"]`);
             const resetBtn = document.querySelector(`.reset-btn[data-question="${containerId}"]`);
-            const fbDiv = document.getElementById(feedbackId);
+            const fbDiv = document.getElementById(fbId);
 
-            // Функция проверки пар
             function checkPairs() {
-                const pairs = [];
                 const rightItems = rightList.querySelectorAll('.drag-item');
-                rightItems.forEach(item => {
-                    const parent = item.parentNode;
-                    if (parent.id === rightId) {
-                        // элемент в правой колонке — ищем слева соответствующий?
-                        // Но правильнее смотреть пары по позициям: в каждом li левой колонки смотрим, какой правый элемент рядом?
-                        // Упростим: проверим, что каждый левый элемент находится в правой колонке? Нет, задача: левый элемент должен быть перемещён к правильному правому.
-                        // Более надёжно: собрать, какой левый элемент находится в паре с каким правым (по индексу? Но порядок может меняться)
-                    }
-                });
-                // Реализуем через сравнение data-id левого элемента и data-id правого элемента, которые находятся рядом? 
-                // Мы сделаем проще: правильное сопоставление: левый с определённым data-id должен быть в паре с правым с data-id из mapping.
-                // Для этого проверим, что для каждого левого элемента, который находится в правой колонке (или наоборот) соблюдается соответствие.
-                // Более практично: все элементы должны быть распределены по парам (левая колонка пуста? Нет, они перемещаются туда-сюда)
-                // Создадим проверку: считаем, что корректно, когда каждый левый элемент находится в той же строке/паре, что и соответствующий правый.
-                // Так как Sortable позволяет свободно перемещать, проще всего сравнить, что левый элемент с data-id = "eq" находится в правой колонке рядом с элементом data-id="yes" и т.д.
-                
-                const leftItems = leftList.querySelectorAll('.drag-item');
-                const rightItemsNow = rightList.querySelectorAll('.drag-item');
-                
-                // Собираем объект: ключ — data-id левого, значение — data-id правого, с которым он «спарен» (если оба в правой колонке и рядом)
-                // Для простоты потребуем, чтобы левые элементы были перемещены в правую колонку и сопоставлены по порядку? 
-                // Сделаем как в типичных заданиях: нужно перетащить каждый левый элемент к соответствующему правому. Оценим по позициям в правой колонке:
-                // Сопоставим индексы: если в правой колонке лежат элементы в порядке: eq, rent, expo и соответствующие правые yes, no, maybe — то правильно.
+                if (rightItems.length !== Object.keys(mapping).length) {
+                    fbDiv.className = 'feedback show incorrect';
+                    fbDiv.textContent = '❌ Переместите все элементы в правую колонку.';
+                    return;
+                }
                 let correct = true;
-                if (rightItemsNow.length !== 3) correct = false;
-                else {
-                    const mappingLeftToRight = {
-                        'eq': 'yes',
-                        'rent': 'no',
-                        'expo': 'maybe'
-                    };
-                    for (let i=0; i<rightItemsNow.length; i++) {
-                        const item = rightItemsNow[i];
-                        const id = item.dataset.id;
-                        // если это левый элемент (есть в mappingLeftToRight), то рядом должен быть правый с нужным id
-                        // Проверим: правый элемент либо сам правый, либо левый? Упростим: потребуем, чтобы правые элементы были на своих местах с data-id, а левые на соответствующих.
-                        // В идеале: левые элементы должны быть в правой колонке, и правые тоже. Мы проверим, что правые с id yes, no, maybe присутствуют, и для каждого левого в правой колонке соседний правый совпадает.
+                for (let i=0; i<rightItems.length; i++) {
+                    const item = rightItems[i];
+                    const id = item.dataset.id;
+                    if (mapping[id] !== undefined) {
+                        const next = rightItems[i+1];
+                        if (!next || mapping[id] !== next.dataset.id) { correct = false; break; }
+                        i++;
+                    } else {
+                        correct = false; break;
                     }
                 }
-                // Упрощённая проверка для демо: сравниваем, что левый с id eq находится рядом с правым yes и т.д.
-                // Чтобы не усложнять, реализуем проверку по сопоставлению атрибутов.
-                const leftInRight = Array.from(rightList.querySelectorAll('.drag-item')).filter(el => el.dataset.id === 'eq' || el.dataset.id === 'rent' || el.dataset.id === 'expo');
-                const rightInRight = Array.from(rightList.querySelectorAll('.drag-item')).filter(el => el.dataset.id === 'yes' || el.dataset.id === 'no' || el.dataset.id === 'maybe');
-                
-                let pairMap = {};
-                // Если все элементы в правой колонке — 6 штук, то проверяем пары по индексу
-                if (leftInRight.length === 3 && rightInRight.length === 3) {
-                    for (let i=0; i<3; i++) {
-                        const leftEl = leftInRight[i];
-                        const rightEl = rightInRight[i];
-                        const leftId = leftEl.dataset.id;
-                        const rightId = rightEl.dataset.id;
-                        if (correctMapping[leftId] !== rightId) { correct = false; break; }
-                    }
-                } else {
-                    correct = false;
-                }
-                
                 fbDiv.classList.remove('correct', 'incorrect');
                 fbDiv.classList.add('show');
                 if (correct) {
@@ -710,85 +580,43 @@
                     fbDiv.textContent = '✅ Отлично! Пары сопоставлены верно.';
                 } else {
                     fbDiv.classList.add('incorrect');
-                    fbDiv.textContent = '❌ Пары неверны. Правильно: оборудование → одобрят; аренда → откажут; выставка → зависит от регламента.';
+                    fbDiv.textContent = '❌ Пары неверны. Проверьте соответствие.';
                 }
             }
 
             checkBtn.addEventListener('click', checkPairs);
 
-            // Сброс: возвращаем элементы в исходные колонки
             resetBtn.addEventListener('click', function() {
-                // очищаем списки и восстанавливаем исходное состояние
-                const leftContainer = document.getElementById(leftId);
-                const rightContainer = document.getElementById(rightId);
-                // для q4
                 if (containerId === 'q4') {
-                    leftContainer.innerHTML = `
-                        <li class="drag-item" data-id="eq">1. Покупка печи (300 000 ₽)</li>
-                        <li class="drag-item" data-id="rent">2. Предоплата аренды (150 000 ₽)</li>
-                        <li class="drag-item" data-id="expo">3. Участие в выставке (50 000 ₽)</li>
-                    `;
-                    rightContainer.innerHTML = `
-                        <li class="drag-item" data-id="yes">A) Скорее всего одобрят</li>
-                        <li class="drag-item" data-id="no">B) Скорее всего откажут</li>
-                        <li class="drag-item" data-id="maybe">C) Зависит от регламента</li>
-                    `;
-                } else if (containerId === 'q9') {
-                    leftContainer.innerHTML = `
-                        <li class="drag-item" data-id="cost">1. Можно ли купить муку?</li>
-                        <li class="drag-item" data-id="reject">2. Меня сразу откажут?</li>
-                        <li class="drag-item" data-id="amount">3. Сколько денег дадут?</li>
-                        <li class="drag-item" data-id="deadline">4. Крайний срок отчёта?</li>
-                    `;
-                    rightContainer.innerHTML = `
-                        <li class="drag-item" data-id="app1">A) Приложение №1 (перечень расходов)</li>
-                        <li class="drag-item" data-id="req">B) Раздел «Требования к участнику»</li>
-                        <li class="drag-item" data-id="calc">C) Пункт «Размер и расчёт субсидии»</li>
-                        <li class="drag-item" data-id="kpi">D) Раздел про KPI и отчётность</li>
-                    `;
+                    leftList.innerHTML = `<li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li><li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li><li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li>`;
+                    rightList.innerHTML = `<li class="drag-item" data-id="yes">Скорее всего одобрят</li><li class="drag-item" data-id="no">Скорее всего откажут</li><li class="drag-item" data-id="maybe">Зависит от регламента</li>`;
+                } else {
+                    leftList.innerHTML = `<li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li>`;
+                    rightList.innerHTML = `<li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li>`;
                 }
                 fbDiv.classList.remove('show', 'correct', 'incorrect');
                 fbDiv.textContent = '';
-                // переинициализация Sortable не требуется, т.к. элементы заменены
             });
         }
 
-        // mapping для q4
-        const mapping4 = { 'eq': 'yes', 'rent': 'no', 'expo': 'maybe' };
-        initDragDrop('q4', 'left4', 'right4', mapping4, 'fb4', 'reset4');
-        
-        const mapping9 = { 'cost': 'app1', 'reject': 'req', 'amount': 'calc', 'deadline': 'kpi' };
-        initDragDrop('q9', 'left9', 'right9', mapping9, 'fb9', 'reset9');
+        initDragDrop('q4', 'left4', 'right4', { 'eq':'yes', 'rent':'no', 'expo':'maybe' }, 'fb4');
+        initDragDrop('q8', 'left8', 'right8', { 'cost':'app1', 'reject':'req', 'amount':'calc', 'deadline':'kpi' }, 'fb8');
 
-        // Для красоты выделение выбранных опций
+        // Выделение опций
         document.querySelectorAll('.option').forEach(opt => {
             opt.addEventListener('click', function(e) {
                 const inp = this.querySelector('input');
-                if (inp) {
-                    if (inp.type === 'radio') {
-                        const name = inp.name;
-                        document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.option').classList.remove('selected'));
-                        inp.checked = true;
-                        this.classList.add('selected');
-                    } else if (inp.type === 'checkbox') {
-                        inp.checked = !inp.checked;
-                        this.classList.toggle('selected', inp.checked);
-                    }
-                }
-            });
-        });
-        // синхронизация selected при прямом клике на input
-        document.querySelectorAll('.option input').forEach(inp => {
-            inp.addEventListener('change', function() {
-                this.closest('.option').classList.toggle('selected', this.checked);
-                if (this.type === 'radio') {
-                    const name = this.name;
+                if (inp.type === 'radio') {
+                    const name = inp.name;
                     document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.option').classList.remove('selected'));
-                    this.closest('.option').classList.add('selected');
+                    inp.checked = true;
+                    this.classList.add('selected');
+                } else if (inp.type === 'checkbox') {
+                    inp.checked = !inp.checked;
+                    this.classList.toggle('selected', inp.checked);
                 }
             });
         });
-
     })();
 </script>
 </body>
