@@ -282,165 +282,7 @@
         <button class="check-btn" id="startTestBtn">Начать тест</button>
     </div>
 
-    <div id="testContainer" style="display: none;">
-        <!-- Вопрос 1 -->
-        <div class="question-card" id="q1">
-            <div class="q-num">Вопрос 1</div>
-            <div class="q-text">Анна уже потратила 300 000 ₽ на оборудование (печи, тестомесы, холодильники и т.д.) для пекарни. Какой вид поддержки подойдёт, чтобы компенсировать уже понесённые расходы?</div>
-            <div class="options" data-type="single" data-correct="2">
-                <div class="option" data-value="1"><input type="radio" name="q1"><label>Грант</label></div>
-                <div class="option" data-value="2"><input type="radio" name="q1"><label>Субсидия</label></div>
-                <div class="option" data-value="3"><input type="radio" name="q1"><label>Льготный кредит</label></div>
-                <div class="option" data-value="4"><input type="radio" name="q1"><label>Пособие</label></div>
-            </div>
-            <div class="action-row">
-                <button class="check-btn" data-question="q1">Проверить</button>
-                <button class="reset-btn" data-question="q1">Сбросить</button>
-            </div>
-            <div class="feedback" id="fb1"></div>
-        </div>
-
-        <!-- Вопрос 2 -->
-        <div class="question-card" id="q2">
-            <div class="q-num">Вопрос 2</div>
-            <div class="q-text">Анна хочет открыть новую пекарню. Трат ещё не было, своих денег нет. Есть бизнес-план. Что искать?</div>
-            <div class="options" data-type="single" data-correct="3">
-                <div class="option" data-value="1"><input type="radio" name="q2"><label>Субсидию</label></div>
-                <div class="option" data-value="2"><input type="radio" name="q2"><label>Льготный кредит</label></div>
-                <div class="option" data-value="3"><input type="radio" name="q2"><label>Грант</label></div>
-                <div class="option" data-value="4"><input type="radio" name="q2"><label>Рассрочку</label></div>
-            </div>
-            <div class="action-row">
-                <button class="check-btn" data-question="q2">Проверить</button>
-                <button class="reset-btn" data-question="q2">Сбросить</button>
-            </div>
-            <div class="feedback" id="fb2"></div>
-        </div>
-
-        <!-- Вопрос 3 -->
-        <div class="question-card" id="q3">
-            <div class="q-num">Вопрос 3</div>
-            <div class="q-text">Срочно нужны 2 000 000 ₽ на муку, масло и другие расходные материалы. Какой вариант компенсации стоит рассмотреть?</div>
-            <div class="options" data-type="single" data-correct="3">
-                <div class="option" data-value="1"><input type="radio" name="q3"><label>Субсидию</label></div>
-                <div class="option" data-value="2"><input type="radio" name="q3"><label>Грант</label></div>
-                <div class="option" data-value="3"><input type="radio" name="q3"><label>Льготный кредит или микрозайм</label></div>
-                <div class="option" data-value="4"><input type="radio" name="q3"><label>Оборотные средства не финансируют</label></div>
-            </div>
-            <div class="action-row">
-                <button class="check-btn" data-question="q3">Проверить</button>
-                <button class="reset-btn" data-question="q3">Сбросить</button>
-            </div>
-            <div class="feedback" id="fb3"></div>
-        </div>
-
-        <!-- Вопрос 4 (drag&drop) -->
-        <div class="question-card" id="q4">
-            <div class="q-num">Вопрос 4 (перетащите пары)</div>
-            <div class="q-text">Соотнесите расходы Анны с вероятностью компенсации (программа на модернизацию оборудования).</div>
-            <div class="drag-container" id="drag4">
-                <div class="drag-col"><h4>Статья расходов</h4><ul class="drag-list" id="left4"><li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li><li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li><li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li></ul></div>
-                <div class="drag-col"><h4>Результат</h4><ul class="drag-list" id="right4"><li class="drag-item" data-id="yes">Скорее всего одобрят</li><li class="drag-item" data-id="no">Скорее всего откажут</li><li class="drag-item" data-id="maybe">Зависит от регламента</li></ul></div>
-            </div>
-            <button class="check-btn" data-question="q4">Проверить пары</button>
-            <button class="reset-btn" data-question="q4">Сбросить</button>
-            <div class="feedback" id="fb4"></div>
-        </div>
-
-        <!-- Вопрос 5 -->
-        <div class="question-card" id="q5">
-            <div class="q-num">Вопрос 5</div>
-            <div class="q-text">Субсидию на оборудование потратили на аренду. Что ждёт предпринимателя?</div>
-            <div class="options" data-type="single" data-correct="2">
-                <div class="option" data-value="1"><input type="radio" name="q5"><label>Ничего, субсидия безвозвратная</label></div>
-                <div class="option" data-value="2"><input type="radio" name="q5"><label>Возврат денег с процентами/штрафом</label></div>
-                <div class="option" data-value="3"><input type="radio" name="q5"><label>Предупреждение, деньги оставят</label></div>
-                <div class="option" data-value="4"><input type="radio" name="q5"><label>Субсидию превратят в кредит</label></div>
-            </div>
-            <button class="check-btn" data-question="q5">Проверить</button>
-            <button class="reset-btn" data-question="q5">Сбросить</button>
-            <div class="feedback" id="fb5"></div>
-        </div>
-
-        <!-- Вопрос 6 -->
-        <div class="question-card" id="q6">
-            <div class="q-num">Вопрос 6</div>
-            <div class="q-text">При подаче заявки обнаружен долг по налогам 5000 ₽. Каков результат?</div>
-            <div class="options" data-type="single" data-correct="2">
-                <div class="option" data-value="1"><input type="radio" name="q6"><label>Одобрят, но вычтут из субсидии</label></div>
-                <div class="option" data-value="2"><input type="radio" name="q6"><label>Откажут автоматически</label></div>
-                <div class="option" data-value="3"><input type="radio" name="q6"><label>Попросят погасить за 30 дней</label></div>
-                <div class="option" data-value="4"><input type="radio" name="q6"><label>Дадут под залог</label></div>
-            </div>
-            <button class="check-btn" data-question="q6">Проверить</button>
-            <button class="reset-btn" data-question="q6">Сбросить</button>
-            <div class="feedback" id="fb6"></div>
-        </div>
-
-        <!-- Вопрос 7 (множественный выбор) -->
-        <div class="question-card" id="q7">
-            <div class="q-num">Вопрос 7</div>
-            <div class="q-text">Выберите ВСЕ пункты, которые являются отсекающими (приводят к мгновенному отказу).</div>
-            <div class="options checkbox-group" data-type="multi" data-correct='["1","3","5"]'>
-                <div class="option" data-value="1"><input type="checkbox"><label>Отсутствие налоговой задолженности</label></div>
-                <div class="option" data-value="2"><input type="checkbox"><label>Количество создаваемых рабочих мест (5 вместо 3)</label></div>
-                <div class="option" data-value="3"><input type="checkbox"><label>Соответствие ОКВЭД программе</label></div>
-                <div class="option" data-value="4"><input type="checkbox"><label>Качество бизнес-плана</label></div>
-                <div class="option" data-value="5"><input type="checkbox"><label>Наличие в реестре МСП</label></div>
-            </div>
-            <button class="check-btn" data-question="q7">Проверить</button>
-            <button class="reset-btn" data-question="q7">Сбросить</button>
-            <div class="feedback" id="fb7"></div>
-        </div>
-
-        <!-- Вопрос 8 (drag&drop) -->
-        <div class="question-card" id="q8">
-            <div class="q-num">Вопрос 8 (перетащите пары)</div>
-            <div class="q-text">Сопоставьте, что искать и в каком разделе документа.</div>
-            <div class="drag-container" id="drag8">
-                <div class="drag-col"><h4>Что ищем</h4><ul class="drag-list" id="left8"><li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li></ul></div>
-                <div class="drag-col"><h4>Где смотреть</h4><ul class="drag-list" id="right8"><li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li></ul></div>
-            </div>
-            <button class="check-btn" data-question="q8">Проверить пары</button>
-            <button class="reset-btn" data-question="q8">Сбросить</button>
-            <div class="feedback" id="fb8"></div>
-        </div>
-
-        <!-- Вопрос 9 -->
-        <div class="question-card" id="q9">
-            <div class="q-num">Вопрос 9</div>
-            <div class="q-text">«…обязан не иметь долгов И работать в регионе ≥3 лет, ЗА ИСКЛЮЧЕНИЕМ новых МСП первого года». Пекарне 6 месяцев. Что это значит?</div>
-            <div class="options" data-type="single" data-correct="2">
-                <div class="option" data-value="1"><input type="radio" name="q9"><label>Не подходит, нет 3 лет</label></div>
-                <div class="option" data-value="2"><input type="radio" name="q9"><label>Подходит, подпадает под исключение</label></div>
-                <div class="option" data-value="3"><input type="radio" name="q9"><label>Обязана отработать 3 года или заплатить налоги</label></div>
-                <div class="option" data-value="4"><input type="radio" name="q9"><label>Требование 3 лет можно игнорировать</label></div>
-            </div>
-            <button class="check-btn" data-question="q9">Проверить</button>
-            <button class="reset-btn" data-question="q9">Сбросить</button>
-            <div class="feedback" id="fb9"></div>
-        </div>
-
-        <!-- Вопрос 10 -->
-        <div class="question-card" id="q10">
-            <div class="q-num">Вопрос 10</div>
-            <div class="q-text">Программа требует софинансирования 30% от стоимости проекта. У предпринимателя есть только 10% своих средств. Одобрят ли заявку?</div>
-            <div class="options" data-type="single" data-correct="2">
-                <div class="option" data-value="1"><input type="radio" name="q10"><label>Да, если проект перспективный</label></div>
-                <div class="option" data-value="2"><input type="radio" name="q10"><label>Нет, несоответствие отсекающему критерию</label></div>
-                <div class="option" data-value="3"><input type="radio" name="q10"><label>Попросят увеличить до 30% в процессе</label></div>
-                <div class="option" data-value="4"><input type="radio" name="q10"><label>Да, если есть поручитель</label></div>
-            </div>
-            <button class="check-btn" data-question="q10">Проверить</button>
-            <button class="reset-btn" data-question="q10">Сбросить</button>
-            <div class="feedback" id="fb10"></div>
-        </div>
-
-        <div class="result-area">
-            <button id="submitTest" class="submit-test">Завершить тест и отправить результаты</button>
-            <div id="resultMessage"></div>
-        </div>
-    </div>
+    <div id="testContainer" style="display: none;"></div>
 </div>
 
 <script>
@@ -458,29 +300,202 @@
             return true;
         }
 
-        document.getElementById('startTestBtn').addEventListener('click', function() {
-            const userName = document.getElementById('userName').value.trim();
-            const userEmail = document.getElementById('userEmail').value.trim();
-            if (!userName || !userEmail) {
-                alert('Пожалуйста, введите имя и email.');
-                return;
-            }
-            localStorage.setItem('testUserName', userName);
-            localStorage.setItem('testUserEmail', userEmail);
-            document.getElementById('userForm').style.display = 'none';
-            document.getElementById('testContainer').style.display = 'block';
-            checkAttempts();
-        });
+        function buildTestHTML() {
+            return `
+            <!-- Вопрос 1 -->
+            <div class="question-card" id="q1">
+                <div class="q-num">Вопрос 1</div>
+                <div class="q-text">Анна уже потратила 300 000 ₽ на оборудование (печи, тестомесы, холодильники и т.д.) для пекарни. Какой вид поддержки подойдёт, чтобы компенсировать уже понесённые расходы?</div>
+                <div class="options" data-type="single" data-correct="2">
+                    <div class="option" data-value="1"><input type="radio" name="q1"><label>Грант</label></div>
+                    <div class="option" data-value="2"><input type="radio" name="q1"><label>Субсидия</label></div>
+                    <div class="option" data-value="3"><input type="radio" name="q1"><label>Льготный кредит</label></div>
+                    <div class="option" data-value="4"><input type="radio" name="q1"><label>Пособие</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q1">Проверить</button>
+                    <button class="reset-btn" data-question="q1">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb1"></div>
+            </div>
+            <!-- Вопрос 2 -->
+            <div class="question-card" id="q2">
+                <div class="q-num">Вопрос 2</div>
+                <div class="q-text">Анна хочет открыть новую пекарню. Трат ещё не было, своих денег нет. Есть бизнес-план. Что искать?</div>
+                <div class="options" data-type="single" data-correct="3">
+                    <div class="option" data-value="1"><input type="radio" name="q2"><label>Субсидию</label></div>
+                    <div class="option" data-value="2"><input type="radio" name="q2"><label>Льготный кредит</label></div>
+                    <div class="option" data-value="3"><input type="radio" name="q2"><label>Грант</label></div>
+                    <div class="option" data-value="4"><input type="radio" name="q2"><label>Рассрочку</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q2">Проверить</button>
+                    <button class="reset-btn" data-question="q2">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb2"></div>
+            </div>
+            <!-- Вопрос 3 -->
+            <div class="question-card" id="q3">
+                <div class="q-num">Вопрос 3</div>
+                <div class="q-text">Срочно нужны 2 000 000 ₽ на муку, масло и другие расходные материалы. Какой вариант компенсации стоит рассмотреть?</div>
+                <div class="options" data-type="single" data-correct="3">
+                    <div class="option" data-value="1"><input type="radio" name="q3"><label>Субсидию</label></div>
+                    <div class="option" data-value="2"><input type="radio" name="q3"><label>Грант</label></div>
+                    <div class="option" data-value="3"><input type="radio" name="q3"><label>Льготный кредит или микрозайм</label></div>
+                    <div class="option" data-value="4"><input type="radio" name="q3"><label>Оборотные средства не финансируют</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q3">Проверить</button>
+                    <button class="reset-btn" data-question="q3">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb3"></div>
+            </div>
+            <!-- Вопрос 4 drag&drop -->
+            <div class="question-card" id="q4">
+                <div class="q-num">Вопрос 4 (перетащите пары)</div>
+                <div class="q-text">Соотнесите расходы Анны с вероятностью компенсации (программа на модернизацию оборудования).</div>
+                <div class="drag-container" id="drag4">
+                    <div class="drag-col"><h4>Статья расходов</h4><ul class="drag-list" id="left4"><li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li><li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li><li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li></ul></div>
+                    <div class="drag-col"><h4>Результат</h4><ul class="drag-list" id="right4"><li class="drag-item" data-id="yes">Скорее всего одобрят</li><li class="drag-item" data-id="no">Скорее всего откажут</li><li class="drag-item" data-id="maybe">Зависит от регламента</li></ul></div>
+                </div>
+                <button class="check-btn" data-question="q4">Проверить пары</button>
+                <button class="reset-btn" data-question="q4">Сбросить</button>
+                <div class="feedback" id="fb4"></div>
+            </div>
+            <!-- Вопрос 5 -->
+            <div class="question-card" id="q5">
+                <div class="q-num">Вопрос 5</div>
+                <div class="q-text">Субсидию на оборудование потратили на аренду. Что ждёт предпринимателя?</div>
+                <div class="options" data-type="single" data-correct="2">
+                    <div class="option" data-value="1"><input type="radio" name="q5"><label>Ничего, субсидия безвозвратная</label></div>
+                    <div class="option" data-value="2"><input type="radio" name="q5"><label>Возврат денег с процентами/штрафом</label></div>
+                    <div class="option" data-value="3"><input type="radio" name="q5"><label>Предупреждение, деньги оставят</label></div>
+                    <div class="option" data-value="4"><input type="radio" name="q5"><label>Субсидию превратят в кредит</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q5">Проверить</button>
+                    <button class="reset-btn" data-question="q5">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb5"></div>
+            </div>
+            <!-- Вопрос 6 -->
+            <div class="question-card" id="q6">
+                <div class="q-num">Вопрос 6</div>
+                <div class="q-text">При подаче заявки обнаружен долг по налогам 5000 ₽. Каков результат?</div>
+                <div class="options" data-type="single" data-correct="2">
+                    <div class="option" data-value="1"><input type="radio" name="q6"><label>Одобрят, но вычтут из субсидии</label></div>
+                    <div class="option" data-value="2"><input type="radio" name="q6"><label>Откажут автоматически</label></div>
+                    <div class="option" data-value="3"><input type="radio" name="q6"><label>Попросят погасить за 30 дней</label></div>
+                    <div class="option" data-value="4"><input type="radio" name="q6"><label>Дадут под залог</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q6">Проверить</button>
+                    <button class="reset-btn" data-question="q6">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb6"></div>
+            </div>
+            <!-- Вопрос 7 множественный -->
+            <div class="question-card" id="q7">
+                <div class="q-num">Вопрос 7</div>
+                <div class="q-text">Выберите ВСЕ пункты, которые являются отсекающими (приводят к мгновенному отказу).</div>
+                <div class="options checkbox-group" data-type="multi" data-correct='["1","3","5"]'>
+                    <div class="option" data-value="1"><input type="checkbox"><label>Отсутствие налоговой задолженности</label></div>
+                    <div class="option" data-value="2"><input type="checkbox"><label>Количество создаваемых рабочих мест (5 вместо 3)</label></div>
+                    <div class="option" data-value="3"><input type="checkbox"><label>Соответствие ОКВЭД программе</label></div>
+                    <div class="option" data-value="4"><input type="checkbox"><label>Качество бизнес-плана</label></div>
+                    <div class="option" data-value="5"><input type="checkbox"><label>Наличие в реестре МСП</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q7">Проверить</button>
+                    <button class="reset-btn" data-question="q7">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb7"></div>
+            </div>
+            <!-- Вопрос 8 drag&drop -->
+            <div class="question-card" id="q8">
+                <div class="q-num">Вопрос 8 (перетащите пары)</div>
+                <div class="q-text">Сопоставьте, что искать и в каком разделе документа.</div>
+                <div class="drag-container" id="drag8">
+                    <div class="drag-col"><h4>Что ищем</h4><ul class="drag-list" id="left8"><li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li></ul></div>
+                    <div class="drag-col"><h4>Где смотреть</h4><ul class="drag-list" id="right8"><li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li></ul></div>
+                </div>
+                <button class="check-btn" data-question="q8">Проверить пары</button>
+                <button class="reset-btn" data-question="q8">Сбросить</button>
+                <div class="feedback" id="fb8"></div>
+            </div>
+            <!-- Вопрос 9 -->
+            <div class="question-card" id="q9">
+                <div class="q-num">Вопрос 9</div>
+                <div class="q-text">«…обязан не иметь долгов И работать в регионе ≥3 лет, ЗА ИСКЛЮЧЕНИЕМ новых МСП первого года». Пекарне 6 месяцев. Что это значит?</div>
+                <div class="options" data-type="single" data-correct="2">
+                    <div class="option" data-value="1"><input type="radio" name="q9"><label>Не подходит, нет 3 лет</label></div>
+                    <div class="option" data-value="2"><input type="radio" name="q9"><label>Подходит, подпадает под исключение</label></div>
+                    <div class="option" data-value="3"><input type="radio" name="q9"><label>Обязана отработать 3 года или заплатить налоги</label></div>
+                    <div class="option" data-value="4"><input type="radio" name="q9"><label>Требование 3 лет можно игнорировать</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q9">Проверить</button>
+                    <button class="reset-btn" data-question="q9">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb9"></div>
+            </div>
+            <!-- Вопрос 10 -->
+            <div class="question-card" id="q10">
+                <div class="q-num">Вопрос 10</div>
+                <div class="q-text">Программа требует софинансирования 30% от стоимости проекта. У предпринимателя есть только 10% своих средств. Одобрят ли заявку?</div>
+                <div class="options" data-type="single" data-correct="2">
+                    <div class="option" data-value="1"><input type="radio" name="q10"><label>Да, если проект перспективный</label></div>
+                    <div class="option" data-value="2"><input type="radio" name="q10"><label>Нет, несоответствие отсекающему критерию</label></div>
+                    <div class="option" data-value="3"><input type="radio" name="q10"><label>Попросят увеличить до 30% в процессе</label></div>
+                    <div class="option" data-value="4"><input type="radio" name="q10"><label>Да, если есть поручитель</label></div>
+                </div>
+                <div class="action-row">
+                    <button class="check-btn" data-question="q10">Проверить</button>
+                    <button class="reset-btn" data-question="q10">Сбросить</button>
+                </div>
+                <div class="feedback" id="fb10"></div>
+            </div>
+            <div class="result-area">
+                <button id="submitTest" class="submit-test">Завершить тест и отправить результаты</button>
+                <div id="resultMessage"></div>
+            </div>
+            `;
+        }
 
-        const feedbackMessages = {
-            q1: { correct: 'Верно! Субсидия (безвозвратная целевая выплата) подходит для компенсации уже сделанных затрат, а также для будущих. Грант даётся до старта проекта, кредит возвратный.', incorrect: 'Неверно. Правильный ответ — субсидия.' },
-            q2: { correct: 'Отлично! При старте с нуля и отсутствии собственных средств лучше всего искать грант (безвозвратное финансирование под идею).', incorrect: 'Ошибка. Субсидия на возмещение не подходит (трат ещё нет), кредит создаст долг. Верный ответ: грант.' },
-            q3: { correct: 'Верно. На срочные операционные расходы (мука, масло) быстрее всего получить льготный кредит или микрозайм — рассмотрение занимает дни или недели. Субсидии и гранты для таких целей практически не применяются и требуют месяцев.', incorrect: 'Неверно. Субсидии и гранты не покрывают текущие расходы и долго рассматриваются. Правильный ответ: льготный кредит или микрозайм.' },
-            q5: { correct: 'Да, нецелевое использование субсидии влечёт возврат всей суммы с процентами или штрафом.', incorrect: 'Неверно. Субсидия даётся под конкретные цели, любое отклонение — возврат денег.' },
-            q6: { correct: 'Именно! Налоговая задолженность (даже 5000 ₽) — отсекающий критерий. Отказ автоматический.', incorrect: 'Ошибка. Даже маленький долг ведёт к отказу без исправления.' },
-            q7: { correct: 'Отлично! Отсекающие критерии: отсутствие налоговых долгов (1), соответствие ОКВЭД (3), наличие в реестре МСП (5).', incorrect: 'Не все верные. Отсекающие: 1, 3, 5. Оценочные: 2 и 4.' },
-            q9: { correct: 'Да! Конструкция «за исключением» означает, что новые МСП (до года) освобождаются от требования стажа.', incorrect: 'Неверно. Ключевая фраза — «за исключением».' },
-            q10: { correct: 'Верно. Софинансирование — жёсткое отсекающее требование. Недостаток собственных средств ведёт к отказу.', incorrect: 'Неверно. Несоответствие требованию софинансирования — отказ.' }
+        // Развёрнутая обратная связь
+        const detailedFeedback = {
+            q1: {
+                correct: 'Правильно. Субсидия — это целевая безвозвратная выплата из бюджета. Она подходит как для компенсации уже понесённых затрат (как в случае с Анной), так и для финансирования будущих расходов. Грант выдаётся до старта проекта под новую идею, кредит нужно возвращать с процентами, пособие — социальная выплата гражданам, не для бизнеса.',
+                incorrect: 'Неверно. Правильный ответ — субсидия. Субсидия позволяет вернуть часть уже потраченных денег на оборудование (и также может выдаваться на будущие проекты). Грант даётся на реализацию идеи до того, как вы что-то купили. Кредит возвратный, пособие не для бизнеса.'
+            },
+            q2: {
+                correct: 'Правильно. При старте с нуля и отсутствии собственных средств лучший вариант — грант (безвозвратное финансирование под бизнес-план). Субсидия на возмещение не подходит (трат ещё нет), кредит создаст долговую нагрузку, рассрочка — это отсрочка платежа, а не финансирование.',
+                incorrect: 'Неверно. Правильный ответ — грант. Гранты и стимулирующие субсидии выдаются на реализацию проекта до начала затрат. Кредит придётся возвращать с процентами, рассрочка не решает проблему отсутствия денег.'
+            },
+            q3: {
+                correct: 'Правильно. На срочные операционные расходы (мука, масло) быстрее всего получить льготный кредит или микрозайм — рассмотрение занимает дни или недели. Субсидии и гранты для таких целей практически не применяются и требуют месяцев рассмотрения. Прямые субсидии на расходные материалы — большая редкость и всегда медленно.',
+                incorrect: 'Неверно. Правильный ответ — льготный кредит или микрозайм. Субсидии и гранты не предназначены для срочной закупки сырья и рассматриваются долго. Для пополнения оборотных средств нужны кредитные продукты.'
+            },
+            q5: {
+                correct: 'Правильно. Нецелевое использование субсидии — серьёзное нарушение. Государство требует вернуть всю сумму с процентами или штрафом, потому что деньги выделялись под конкретную цель (оборудование).',
+                incorrect: 'Неверно. Субсидия даётся под конкретные цели, указанные в договоре. Если потратить её на другое, последует возврат всей суммы с процентами или штрафом. Предупреждением не отделаться.'
+            },
+            q6: {
+                correct: 'Правильно. Налоговая задолженность (даже 5000 ₽) — это отсекающий критерий. Заявку отклонят автоматически, даже не рассматривая по существу. Долги нужно погасить до подачи.',
+                incorrect: 'Неверно. Даже маленький долг ведёт к автоматическому отказу. Отсекающие критерии работают как жёсткий фильтр: "да/нет". Никакого права на исправление в процессе рассмотрения нет.'
+            },
+            q7: {
+                correct: 'Правильно. Отсекающие критерии: отсутствие налоговых долгов (1), соответствие ОКВЭД (3), наличие в реестре МСП (5). Если хоть один не выполнен — отказ без рассмотрения. Пункты 2 (рабочие места) и 4 (качество бизнес-плана) — оценочные, влияют на баллы после прохождения отсечки.',
+                incorrect: 'Неверно. Отсекающие: 1, 3, 5. Оценочные: 2 и 4. Перепроверьте: отсутствие долгов, подходящий ОКВЭД и статус МСП — это базовые требования, без которых заявку даже не откроют.'
+            },
+            q9: {
+                correct: 'Правильно. Конструкция «за исключением» означает, что новые МСП (до года) освобождаются от требования стажа. Пекарне 6 месяцев — подпадает под исключение. Внимательное чтение регламентов помогает не пропускать такие послабления.',
+                incorrect: 'Неверно. Ключевая фраза — «за исключением новых МСП первого года». Это значит, что для молодых компаний требование 3 лет не действует. Пекарне 6 месяцев — подходит.'
+            },
+            q10: {
+                correct: 'Правильно. Софинансирование — жёсткое отсекающее требование. Если программа требует 30% собственных средств, а у вас только 10%, заявку отклонят сразу. Это проверяется по выписке с расчётного счёта.',
+                incorrect: 'Неверно. Софинансирование — это обязательное условие. Недостаток собственных средств ведёт к отказу. Никакие «перспективность» или поручительство не заменят требуемый процент.'
+            }
         };
 
         function getSelectedValues(container) {
@@ -495,85 +510,138 @@
             return null;
         }
 
-        document.querySelectorAll('.check-btn[data-question]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const qId = this.dataset.question;
-                if (qId === 'q4' || qId === 'q8') return;
-                const card = document.getElementById(qId);
-                const optionsDiv = card.querySelector('.options');
-                const fbDiv = card.querySelector('.feedback');
-                const type = optionsDiv.dataset.type;
-                const correctRaw = optionsDiv.dataset.correct;
-                let isCorrect = false;
-                if (type === 'single') {
-                    const selected = getSelectedValues(optionsDiv);
-                    isCorrect = (selected === correctRaw);
-                } else {
-                    const selectedArr = getSelectedValues(optionsDiv);
-                    const correctArr = JSON.parse(correctRaw);
-                    isCorrect = selectedArr.length === correctArr.length && correctArr.every(v => selectedArr.includes(v));
-                }
-                fbDiv.classList.remove('correct', 'incorrect');
-                fbDiv.classList.add('show', isCorrect ? 'correct' : 'incorrect');
-                const msg = feedbackMessages[qId];
-                fbDiv.textContent = isCorrect ? msg.correct : msg.incorrect;
-            });
-        });
+        function disableQuestion(qId, isDrag = false) {
+            const card = document.getElementById(qId);
+            if (!card) return;
+            if (!isDrag) {
+                const inputs = card.querySelectorAll('input');
+                inputs.forEach(inp => inp.disabled = true);
+                const resetBtn = card.querySelector('.reset-btn');
+                if (resetBtn) resetBtn.style.display = 'none';
+                const checkBtn = card.querySelector('.check-btn');
+                if (checkBtn) checkBtn.style.display = 'none';
+            } else {
+                const checkBtn = card.querySelector('.check-btn');
+                if (checkBtn) checkBtn.disabled = true;
+                const resetBtn = card.querySelector('.reset-btn');
+                if (resetBtn) resetBtn.style.display = 'none';
+                const dragItems = card.querySelectorAll('.drag-item');
+                dragItems.forEach(item => {
+                    item.style.cursor = 'default';
+                    item.style.opacity = '0.7';
+                    item.style.pointerEvents = 'none';
+                });
+                // также отключаем сортировку (Sortable уничтожать не будем, просто блокируем)
+                const dragContainers = card.querySelectorAll('.drag-list');
+                dragContainers.forEach(container => {
+                    container.style.pointerEvents = 'none';
+                });
+            }
+        }
 
-        document.querySelectorAll('.reset-btn[data-question]').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const qId = this.dataset.question;
-                if (qId === 'q4' || qId === 'q8') return;
-                const card = document.getElementById(qId);
-                card.querySelectorAll('input').forEach(inp => inp.checked = false);
-                card.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
-                const fbDiv = card.querySelector('.feedback');
-                fbDiv.classList.remove('show');
+        function attachCheckEvents() {
+            document.querySelectorAll('.check-btn[data-question]').forEach(btn => {
+                btn.removeEventListener('click', window.checkHandler);
+                const handler = function(e) {
+                    const qId = this.dataset.question;
+                    const isDrag = (qId === 'q4' || qId === 'q8');
+                    const card = document.getElementById(qId);
+                    const fbDiv = card.querySelector('.feedback');
+                    let isCorrect = false;
+                    if (!isDrag) {
+                        const optionsDiv = card.querySelector('.options');
+                        const type = optionsDiv.dataset.type;
+                        const correctRaw = optionsDiv.dataset.correct;
+                        if (type === 'single') {
+                            const selected = getSelectedValues(optionsDiv);
+                            isCorrect = (selected === correctRaw);
+                        } else if (type === 'multi') {
+                            const selectedArr = getSelectedValues(optionsDiv);
+                            const correctArr = JSON.parse(correctRaw);
+                            isCorrect = selectedArr.length === correctArr.length && correctArr.every(v => selectedArr.includes(v));
+                        }
+                    } else {
+                        // drag&drop проверка
+                        if (qId === 'q4') {
+                            const rightItems = document.querySelectorAll('#right4 .drag-item');
+                            if (rightItems.length === 3) {
+                                const order = Array.from(rightItems).map(item => item.dataset.id);
+                                isCorrect = (order[0] === 'yes' && order[1] === 'no' && order[2] === 'maybe');
+                            }
+                        } else if (qId === 'q8') {
+                            const rightItems = document.querySelectorAll('#right8 .drag-item');
+                            if (rightItems.length === 4) {
+                                const order = Array.from(rightItems).map(item => item.dataset.id);
+                                isCorrect = (order[0] === 'app1' && order[1] === 'req' && order[2] === 'calc' && order[3] === 'kpi');
+                            }
+                        }
+                    }
+                    fbDiv.classList.remove('correct', 'incorrect');
+                    fbDiv.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+                    const msg = detailedFeedback[qId];
+                    if (msg) {
+                        fbDiv.textContent = isCorrect ? msg.correct : msg.incorrect;
+                    } else {
+                        fbDiv.textContent = isCorrect ? 'Правильно.' : 'Неверно.';
+                    }
+                    // Блокируем вопрос после проверки
+                    disableQuestion(qId, isDrag);
+                };
+                btn.addEventListener('click', handler);
+                window.checkHandler = handler;
             });
-        });
+            // Сброс (оставляем для возможности, но после проверки кнопка скрывается)
+            document.querySelectorAll('.reset-btn[data-question]').forEach(btn => {
+                btn.removeEventListener('click', window.resetHandler);
+                const handler = function(e) {
+                    const qId = this.dataset.question;
+                    const isDrag = (qId === 'q4' || qId === 'q8');
+                    const card = document.getElementById(qId);
+                    if (!isDrag) {
+                        card.querySelectorAll('input').forEach(inp => inp.checked = false);
+                        card.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                    } else {
+                        // сброс drag&drop
+                        if (qId === 'q4') {
+                            const left4 = document.getElementById('left4');
+                            const right4 = document.getElementById('right4');
+                            left4.innerHTML = '<li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li><li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li><li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li>';
+                            right4.innerHTML = '<li class="drag-item" data-id="yes">Скорее всего одобрят</li><li class="drag-item" data-id="no">Скорее всего откажут</li><li class="drag-item" data-id="maybe">Зависит от регламента</li>';
+                        } else if (qId === 'q8') {
+                            const left8 = document.getElementById('left8');
+                            const right8 = document.getElementById('right8');
+                            left8.innerHTML = '<li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li>';
+                            right8.innerHTML = '<li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li>';
+                        }
+                        // пересоздаём Sortable
+                        const dragContainer = card.querySelector('.drag-container');
+                        if (dragContainer) {
+                            const oldLeft = dragContainer.querySelector('.drag-list');
+                            // просто сбросим стили
+                        }
+                    }
+                    const fbDiv = card.querySelector('.feedback');
+                    fbDiv.classList.remove('show');
+                };
+                btn.addEventListener('click', handler);
+                window.resetHandler = handler;
+            });
+            // Drag&Drop инициализация (после генерации контента)
+            initDragDrop('q4', 'left4', 'right4', { 'eq':'yes', 'rent':'no', 'expo':'maybe' }, 'fb4');
+            initDragDrop('q8', 'left8', 'right8', { 'cost':'app1', 'reject':'req', 'amount':'calc', 'deadline':'kpi' }, 'fb8');
+        }
 
         function initDragDrop(containerId, leftId, rightId, mapping, fbId) {
             const leftList = document.getElementById(leftId);
             const rightList = document.getElementById(rightId);
+            if (!leftList || !rightList) return;
             new Sortable(leftList, { group: containerId, animation: 200, ghostClass: 'sortable-ghost', sort: true });
             new Sortable(rightList, { group: containerId, animation: 200, ghostClass: 'sortable-ghost', sort: true });
-            const checkBtn = document.querySelector(`.check-btn[data-question="${containerId}"]`);
-            const resetBtn = document.querySelector(`.reset-btn[data-question="${containerId}"]`);
-            const fbDiv = document.getElementById(fbId);
-            checkBtn.addEventListener('click', () => {
-                const rightItems = rightList.querySelectorAll('.drag-item');
-                if (rightItems.length !== Object.keys(mapping).length) {
-                    fbDiv.className = 'feedback show incorrect';
-                    fbDiv.textContent = 'Переместите все элементы в правую колонку.';
-                    return;
-                }
-                let correct = true;
-                for (let i=0; i<rightItems.length; i+=2) {
-                    const item = rightItems[i];
-                    const next = rightItems[i+1];
-                    if (!next || mapping[item.dataset.id] !== next.dataset.id) { correct = false; break; }
-                }
-                fbDiv.classList.remove('correct', 'incorrect');
-                fbDiv.classList.add('show');
-                fbDiv.classList.add(correct ? 'correct' : 'incorrect');
-                fbDiv.textContent = correct ? 'Пары сопоставлены верно.' : 'Пары неверны. Проверьте соответствие.';
-            });
-            resetBtn.addEventListener('click', () => {
-                if (containerId === 'q4') {
-                    leftList.innerHTML = '<li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li><li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li><li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li>';
-                    rightList.innerHTML = '<li class="drag-item" data-id="yes">Скорее всего одобрят</li><li class="drag-item" data-id="no">Скорее всего откажут</li><li class="drag-item" data-id="maybe">Зависит от регламента</li>';
-                } else {
-                    leftList.innerHTML = '<li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li>';
-                    rightList.innerHTML = '<li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li>';
-                }
-                fbDiv.classList.remove('show');
-            });
         }
-        initDragDrop('q4', 'left4', 'right4', { 'eq':'yes', 'rent':'no', 'expo':'maybe' }, 'fb4');
-        initDragDrop('q8', 'left8', 'right8', { 'cost':'app1', 'reject':'req', 'amount':'calc', 'deadline':'kpi' }, 'fb8');
 
         function calculateScore() {
             let correctCount = 0;
+            // Вопросы с радио
             const q1 = document.querySelector('#q1 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
             const q2 = document.querySelector('#q2 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '3';
             const q3 = document.querySelector('#q3 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '3';
@@ -581,15 +649,18 @@
             const q6 = document.querySelector('#q6 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
             const q9 = document.querySelector('#q9 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
             const q10 = document.querySelector('#q10 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
+            // Вопрос 7
             const q7Options = document.querySelectorAll('#q7 .options input[type="checkbox"]');
             const selectedQ7 = Array.from(q7Options).filter(cb => cb.checked).map(cb => cb.closest('.option').dataset.value);
             const q7Correct = selectedQ7.length === 3 && selectedQ7.includes('1') && selectedQ7.includes('3') && selectedQ7.includes('5');
+            // Вопрос 4 drag
             const right4 = document.querySelectorAll('#right4 .drag-item');
             let q4Correct = false;
             if (right4.length === 3) {
                 const order = Array.from(right4).map(item => item.dataset.id);
                 q4Correct = (order[0] === 'yes' && order[1] === 'no' && order[2] === 'maybe');
             }
+            // Вопрос 8 drag
             const right8 = document.querySelectorAll('#right8 .drag-item');
             let q8Correct = false;
             if (right8.length === 4) {
@@ -609,53 +680,49 @@
             return correctCount;
         }
 
-        document.getElementById('submitTest').addEventListener('click', function() {
-            if (testCompleted) {
-                alert('Тест уже завершён. Вы не можете изменить ответы.');
+        document.getElementById('startTestBtn').addEventListener('click', function() {
+            const userName = document.getElementById('userName').value.trim();
+            const userEmail = document.getElementById('userEmail').value.trim();
+            if (!userName || !userEmail) {
+                alert('Пожалуйста, введите имя и email.');
                 return;
             }
-            const score = calculateScore();
-            const maxScore = 10;
-            const percentage = (score / maxScore) * 100;
-            const userName = localStorage.getItem('testUserName') || 'Гость';
-            const userEmail = localStorage.getItem('testUserEmail') || '';
-            const passed = percentage >= 80;
-            const resultText = passed ? `Поздравляем! Вы набрали ${score} из ${maxScore} (${percentage}%). Сертификат об освоении темы будет отправлен на ${userEmail}.` : `Вы набрали ${score} из ${maxScore} (${percentage}%). Сертификат участника будет отправлен на ${userEmail}.`;
-            document.getElementById('resultMessage').innerHTML = `<div class="score-text">${resultText}</div>`;
-            if (userEmail) {
-                const formData = new FormData();
-                formData.append('name', userName);
-                formData.append('email', userEmail);
-                formData.append('score', `${score}/${maxScore}`);
-                formData.append('percentage', `${percentage}%`);
-                formData.append('certificate', passed ? 'Сертификат об освоении темы' : 'Сертификат участника');
-                fetch('https://formspree.io/f/xldrrkaj', {
-                    method: 'POST',
-                    body: formData,
-                    headers: { 'Accept': 'application/json' }
-                }).catch(e => console.log(e));
-            }
-            testCompleted = true;
-            attempts++;
-            localStorage.setItem('testAttempts', attempts);
-            if (attempts >= 2) {
-                const btn = document.getElementById('submitTest');
-                btn.disabled = true;
-                btn.textContent = 'Тест закрыт (2 попытки использованы)';
-            }
-        });
+            localStorage.setItem('testUserName', userName);
+            localStorage.setItem('testUserEmail', userEmail);
+            document.getElementById('userForm').style.display = 'none';
+            const container = document.getElementById('testContainer');
+            container.innerHTML = buildTestHTML();
+            container.style.display = 'block';
+            if (!checkAttempts()) return;
+            attachCheckEvents();
 
-        document.querySelectorAll('.option').forEach(opt => {
-            opt.addEventListener('click', function(e) {
-                const inp = this.querySelector('input');
-                if (inp.type === 'radio') {
-                    const name = inp.name;
-                    document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.option').classList.remove('selected'));
-                    inp.checked = true;
-                    this.classList.add('selected');
-                } else if (inp.type === 'checkbox') {
-                    inp.checked = !inp.checked;
-                    this.classList.toggle('selected', inp.checked);
+            document.getElementById('submitTest').addEventListener('click', function() {
+                if (testCompleted) { alert('Тест уже завершён.'); return; }
+                const score = calculateScore();
+                const maxScore = 10;
+                const percentage = (score / maxScore) * 100;
+                const name = localStorage.getItem('testUserName') || 'Гость';
+                const email = localStorage.getItem('testUserEmail') || '';
+                const passed = percentage >= 80;
+                const resultText = passed ? `Поздравляем! Вы набрали ${score} из ${maxScore} (${percentage}%). Сертификат об освоении темы будет отправлен на ${email}.` : `Вы набрали ${score} из ${maxScore} (${percentage}%). Сертификат участника будет отправлен на ${email}.`;
+                document.getElementById('resultMessage').innerHTML = `<div class="score-text">${resultText}</div>`;
+                if (email) {
+                    const formData = new FormData();
+                    formData.append('name', name);
+                    formData.append('email', email);
+                    formData.append('score', `${score}/${maxScore}`);
+                    formData.append('percentage', `${percentage}%`);
+                    formData.append('certificate', passed ? 'Сертификат об освоении темы' : 'Сертификат участника');
+                    fetch('https://formspree.io/f/xldrrkaj', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
+                        .catch(e => console.log(e));
+                }
+                testCompleted = true;
+                attempts++;
+                localStorage.setItem('testAttempts', attempts);
+                if (attempts >= 2) {
+                    const btn = document.getElementById('submitTest');
+                    btn.disabled = true;
+                    btn.textContent = 'Тест закрыт (2 попытки использованы)';
                 }
             });
         });
