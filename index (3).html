@@ -265,14 +265,14 @@
 <div class="container">
     <h1>Субсидии: подводим итоги</h1>
     <div class="tech-info">
-        <p>✅ <strong>Порог успеха:</strong> 8 из 10 правильных ответов (80%).</p>
-        <p>📜 <strong>Сертификат:</strong> выдаётся при достижении 80% (на первой или второй попытке).</p>
-        <div class="eva-message">Ева напоминает: внимательно читайте вопросы. Удачи!</div>
+        <p><strong>Порог успеха:</strong> 8 из 10 правильных ответов (80%).</p>
+        <p><strong>Сертификат:</strong> о успешном обучении выдаётся при достижении 80% (на первой или второй попытке). Если результат меньше 80%, вы получите сертификат о прохождении кусра. Сертификат придёт на указанную почту</p>
+        <div class="eva-message">внимательно читайте вопросы. Удачи!</div>
     </div>
 
     <!-- Форма регистрации -->
     <div class="user-form" id="userForm">
-        <h2>📝 Перед началом теста</h2>
+        <h2>Перед началом теста укажите</h2>
         <div class="form-group">
             <label>Ваше имя</label>
             <input type="text" id="userName" placeholder="Иван Иванов">
@@ -342,8 +342,8 @@
             <div class="q-num">Вопрос 4 (перетащите пары)</div>
             <div class="q-text">Соотнесите расходы Анны с вероятностью компенсации (программа на модернизацию оборудования).</div>
             <div class="drag-container" id="drag4">
-                <div class="drag-col"><h4>📌 Статья расходов</h4><ul class="drag-list" id="left4"><li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li><li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li><li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li></ul></div>
-                <div class="drag-col"><h4>🎯 Результат</h4><ul class="drag-list" id="right4"><li class="drag-item" data-id="yes">Скорее всего одобрят</li><li class="drag-item" data-id="no">Скорее всего откажут</li><li class="drag-item" data-id="maybe">Зависит от регламента</li></ul></div>
+                <div class="drag-col"><h4>Статья расходов</h4><ul class="drag-list" id="left4"><li class="drag-item" data-id="eq">Покупка печи (300 000 ₽)</li><li class="drag-item" data-id="rent">Предоплата аренды (150 000 ₽)</li><li class="drag-item" data-id="expo">Участие в выставке (50 000 ₽)</li></ul></div>
+                <div class="drag-col"><h4>Результат</h4><ul class="drag-list" id="right4"><li class="drag-item" data-id="yes">Скорее всего одобрят</li><li class="drag-item" data-id="no">Скорее всего откажут</li><li class="drag-item" data-id="maybe">Зависит от регламента</li></ul></div>
             </div>
             <button class="check-btn" data-question="q4">Проверить пары</button>
             <button class="reset-btn" data-question="q4">Сбросить</button>
@@ -401,8 +401,8 @@
             <div class="q-num">Вопрос 8 (перетащите пары)</div>
             <div class="q-text">Сопоставьте, что искать и в каком разделе документа.</div>
             <div class="drag-container" id="drag8">
-                <div class="drag-col"><h4>🔍 Что ищем</h4><ul class="drag-list" id="left8"><li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li></ul></div>
-                <div class="drag-col"><h4>📂 Где смотреть</h4><ul class="drag-list" id="right8"><li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li></ul></div>
+                <div class="drag-col"><h4>Что ищем</h4><ul class="drag-list" id="left8"><li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li></ul></div>
+                <div class="drag-col"><h4>Где смотреть</h4><ul class="drag-list" id="right8"><li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li></ul></div>
             </div>
             <button class="check-btn" data-question="q8">Проверить пары</button>
             <button class="reset-btn" data-question="q8">Сбросить</button>
@@ -552,7 +552,7 @@
                 const rightItems = rightList.querySelectorAll('.drag-item');
                 if (rightItems.length !== Object.keys(mapping).length) {
                     fbDiv.className = 'feedback show incorrect';
-                    fbDiv.textContent = '❌ Переместите все элементы в правую колонку.';
+                    fbDiv.textContent = ' Переместите все элементы в правую колонку.';
                     return;
                 }
                 let correct = true;
@@ -564,7 +564,7 @@
                 fbDiv.classList.remove('correct', 'incorrect');
                 fbDiv.classList.add('show');
                 fbDiv.classList.add(correct ? 'correct' : 'incorrect');
-                fbDiv.textContent = correct ? '✅ Пары сопоставлены верно.' : '❌ Пары неверны. Проверьте соответствие.';
+                fbDiv.textContent = correct ? '✅ Пары сопоставлены верно.' : 'Пары неверны. Проверьте соответствие.';
             });
             resetBtn.addEventListener('click', () => {
                 if (containerId === 'q4') {
