@@ -162,6 +162,7 @@
             border-radius: 24px;
             border: 1.5px solid rgba(40,203,198,0.25);
             cursor: pointer;
+            transition: all 0.15s;
         }
         .option:hover {
             border-color: #28CBC6;
@@ -170,11 +171,17 @@
         .option.selected {
             border-color: #28CBC6;
             background: rgba(40,203,198,0.08);
+            box-shadow: 0 2px 8px rgba(40,203,198,0.15);
         }
+        /* Убираем черную обводку у radio и checkbox */
         .option input {
             accent-color: #28CBC6;
             width: 20px;
             height: 20px;
+            margin: 0;
+            outline: none;
+            box-shadow: none;
+            border: none;
         }
         .check-btn, .submit-test {
             background: #28CBC6;
@@ -241,6 +248,11 @@
             border-radius: 20px;
             border: 1.5px solid rgba(40,203,198,0.3);
             cursor: grab;
+            transition: all 0.15s;
+        }
+        .drag-item:hover {
+            border-color: #28CBC6;
+            background: rgba(40,203,198,0.03);
         }
         .result-area {
             background: rgba(255,255,255,0.9);
@@ -462,7 +474,6 @@
             `;
         }
 
-        // Развёрнутая обратная связь
         const detailedFeedback = {
             q1: {
                 correct: 'Правильно. Субсидия — это целевая безвозвратная выплата из бюджета. Она подходит как для компенсации уже понесённых затрат (как в случае с Анной), так и для финансирования будущих расходов. Грант выдаётся до старта проекта под новую идею, кредит нужно возвращать с процентами, пособие — социальная выплата гражданам, не для бизнеса.',
@@ -531,7 +542,6 @@
                     item.style.opacity = '0.7';
                     item.style.pointerEvents = 'none';
                 });
-                // также отключаем сортировку (Sortable уничтожать не будем, просто блокируем)
                 const dragContainers = card.querySelectorAll('.drag-list');
                 dragContainers.forEach(container => {
                     container.style.pointerEvents = 'none';
@@ -555,13 +565,12 @@
                         if (type === 'single') {
                             const selected = getSelectedValues(optionsDiv);
                             isCorrect = (selected === correctRaw);
-                        } else if (type === 'multi') {
+                        } else {
                             const selectedArr = getSelectedValues(optionsDiv);
                             const correctArr = JSON.parse(correctRaw);
                             isCorrect = selectedArr.length === correctArr.length && correctArr.every(v => selectedArr.includes(v));
                         }
                     } else {
-                        // drag&drop проверка
                         if (qId === 'q4') {
                             const rightItems = document.querySelectorAll('#right4 .drag-item');
                             if (rightItems.length === 3) {
@@ -579,18 +588,12 @@
                     fbDiv.classList.remove('correct', 'incorrect');
                     fbDiv.classList.add('show', isCorrect ? 'correct' : 'incorrect');
                     const msg = detailedFeedback[qId];
-                    if (msg) {
-                        fbDiv.textContent = isCorrect ? msg.correct : msg.incorrect;
-                    } else {
-                        fbDiv.textContent = isCorrect ? 'Правильно.' : 'Неверно.';
-                    }
-                    // Блокируем вопрос после проверки
+                    fbDiv.textContent = isCorrect ? msg.correct : msg.incorrect;
                     disableQuestion(qId, isDrag);
                 };
                 btn.addEventListener('click', handler);
                 window.checkHandler = handler;
             });
-            // Сброс (оставляем для возможности, но после проверки кнопка скрывается)
             document.querySelectorAll('.reset-btn[data-question]').forEach(btn => {
                 btn.removeEventListener('click', window.resetHandler);
                 const handler = function(e) {
@@ -601,7 +604,6 @@
                         card.querySelectorAll('input').forEach(inp => inp.checked = false);
                         card.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
                     } else {
-                        // сброс drag&drop
                         if (qId === 'q4') {
                             const left4 = document.getElementById('left4');
                             const right4 = document.getElementById('right4');
@@ -613,12 +615,17 @@
                             left8.innerHTML = '<li class="drag-item" data-id="cost">Можно ли купить муку?</li><li class="drag-item" data-id="reject">Меня сразу откажут?</li><li class="drag-item" data-id="amount">Сколько денег дадут?</li><li class="drag-item" data-id="deadline">Крайний срок отчёта?</li>';
                             right8.innerHTML = '<li class="drag-item" data-id="app1">Приложение №1 (перечень расходов)</li><li class="drag-item" data-id="req">Раздел «Требования к участнику»</li><li class="drag-item" data-id="calc">Пункт «Размер и расчёт субсидии»</li><li class="drag-item" data-id="kpi">Раздел про KPI и отчётность</li>';
                         }
-                        // пересоздаём Sortable
-                        const dragContainer = card.querySelector('.drag-container');
-                        if (dragContainer) {
-                            const oldLeft = dragContainer.querySelector('.drag-list');
-                            // просто сбросим стили
-                        }
+                        const dragContainers = card.querySelectorAll('.drag-list');
+                        dragContainers.forEach(container => {
+                            container.style.pointerEvents = '';
+                        });
+                        const dragItems = card.querySelectorAll('.drag-item');
+                        dragItems.forEach(item => {
+                            item.style.cursor = 'grab';
+                            item.style.opacity = '1';
+                        });
+                        const checkBtn = card.querySelector('.check-btn');
+                        if (checkBtn) checkBtn.disabled = false;
                     }
                     const fbDiv = card.querySelector('.feedback');
                     fbDiv.classList.remove('show');
@@ -626,22 +633,39 @@
                 btn.addEventListener('click', handler);
                 window.resetHandler = handler;
             });
-            // Drag&Drop инициализация (после генерации контента)
-            initDragDrop('q4', 'left4', 'right4', { 'eq':'yes', 'rent':'no', 'expo':'maybe' }, 'fb4');
-            initDragDrop('q8', 'left8', 'right8', { 'cost':'app1', 'reject':'req', 'amount':'calc', 'deadline':'kpi' }, 'fb8');
+            // Инициализация Sortable для drag-drop
+            if (document.getElementById('left4') && document.getElementById('right4')) {
+                new Sortable(document.getElementById('left4'), { group: 'q4', animation: 200, ghostClass: 'sortable-ghost', sort: true });
+                new Sortable(document.getElementById('right4'), { group: 'q4', animation: 200, ghostClass: 'sortable-ghost', sort: true });
+            }
+            if (document.getElementById('left8') && document.getElementById('right8')) {
+                new Sortable(document.getElementById('left8'), { group: 'q8', animation: 200, ghostClass: 'sortable-ghost', sort: true });
+                new Sortable(document.getElementById('right8'), { group: 'q8', animation: 200, ghostClass: 'sortable-ghost', sort: true });
+            }
         }
 
-        function initDragDrop(containerId, leftId, rightId, mapping, fbId) {
-            const leftList = document.getElementById(leftId);
-            const rightList = document.getElementById(rightId);
-            if (!leftList || !rightList) return;
-            new Sortable(leftList, { group: containerId, animation: 200, ghostClass: 'sortable-ghost', sort: true });
-            new Sortable(rightList, { group: containerId, animation: 200, ghostClass: 'sortable-ghost', sort: true });
+        function attachOptionClickHandlers() {
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.removeEventListener('click', window.optionClickHandler);
+                const handler = function(e) {
+                    const inp = this.querySelector('input');
+                    if (inp.type === 'radio') {
+                        const name = inp.name;
+                        document.querySelectorAll(`input[name="${name}"]`).forEach(r => r.closest('.option').classList.remove('selected'));
+                        inp.checked = true;
+                        this.classList.add('selected');
+                    } else if (inp.type === 'checkbox') {
+                        inp.checked = !inp.checked;
+                        this.classList.toggle('selected', inp.checked);
+                    }
+                };
+                opt.addEventListener('click', handler);
+                window.optionClickHandler = handler;
+            });
         }
 
         function calculateScore() {
             let correctCount = 0;
-            // Вопросы с радио
             const q1 = document.querySelector('#q1 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
             const q2 = document.querySelector('#q2 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '3';
             const q3 = document.querySelector('#q3 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '3';
@@ -649,18 +673,15 @@
             const q6 = document.querySelector('#q6 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
             const q9 = document.querySelector('#q9 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
             const q10 = document.querySelector('#q10 input[type="radio"]:checked')?.closest('.option')?.dataset.value === '2';
-            // Вопрос 7
             const q7Options = document.querySelectorAll('#q7 .options input[type="checkbox"]');
             const selectedQ7 = Array.from(q7Options).filter(cb => cb.checked).map(cb => cb.closest('.option').dataset.value);
             const q7Correct = selectedQ7.length === 3 && selectedQ7.includes('1') && selectedQ7.includes('3') && selectedQ7.includes('5');
-            // Вопрос 4 drag
             const right4 = document.querySelectorAll('#right4 .drag-item');
             let q4Correct = false;
             if (right4.length === 3) {
                 const order = Array.from(right4).map(item => item.dataset.id);
                 q4Correct = (order[0] === 'yes' && order[1] === 'no' && order[2] === 'maybe');
             }
-            // Вопрос 8 drag
             const right8 = document.querySelectorAll('#right8 .drag-item');
             let q8Correct = false;
             if (right8.length === 4) {
@@ -694,6 +715,7 @@
             container.innerHTML = buildTestHTML();
             container.style.display = 'block';
             if (!checkAttempts()) return;
+            attachOptionClickHandlers();
             attachCheckEvents();
 
             document.getElementById('submitTest').addEventListener('click', function() {
